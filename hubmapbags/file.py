@@ -177,7 +177,7 @@ def __get_dbgap_study_id(file: str, dbgap_study_id: str) -> str:
     if dbgap_study_id == "" or dbgap_study_id is None:
         return ""
     else:
-        if str(file).find("tar.gz") > 0:
+        if str(file).find("tar.gz") > 0 | str(file).find("fastq.gz") > 0:
             return dbgap_study_id
         else:
             return ""
