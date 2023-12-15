@@ -285,10 +285,9 @@ def _build_dataframe(
     else:
         df["local_id"] = None
 
+    print(f'dbGaP study ID set to {df["dbgap_study_id"]}')
     df["persistent_id"] = df["local_id"].apply(__get_persistent_id)
     df["dbgap_study_id"] = df["local_id"].apply(__get_dbgap_study_id, dbgap_study_id)
-
-    print(f'dbGaP study ID set to {df["dbgap_study_id"]}')
 
     if "modification_time" in df.keys():
         df = df.rename(columns={"modification_time": "creation_time"})

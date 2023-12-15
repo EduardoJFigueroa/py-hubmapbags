@@ -1080,7 +1080,7 @@ def do_it(
                     assay_type=data_type,
                     directory=data_directory,
                     output_directory=output_directory,
-                    dbgap_study_id=dbgap_study_id,
+                    dbgap_study_id=__get_dbgap_study_id(hubmap_id, token),
                     token=token,
                     dataset_hmid=hubmap_id,
                     dataset_uuid=hubmap_uuid,
