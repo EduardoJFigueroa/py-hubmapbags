@@ -177,7 +177,6 @@ def __get_dbgap_study_id(file: str, dbgap_study_id: str) -> str:
     if dbgap_study_id == "" or dbgap_study_id is None:
         return ""
     else:
-        print(f'{file} {str(file).find("tar.gz") > 0 | str(file).find("fastq.gz") > 0}')
         if str(file).find("tar.gz") > 0 | str(file).find("fastq.gz") > 0:
             return dbgap_study_id
         else:
@@ -287,7 +286,7 @@ def _build_dataframe(
         df["local_id"] = None
 
     df["persistent_id"] = df["local_id"].apply(__get_persistent_id)
-    df["dbgap_study_id"] = df["local_id"].apply(
+    df["dbgap_study_id"] = df["filename"].apply(
         __get_dbgap_study_id, dbgap_study_id=dbgap_study_id
     )
 
@@ -383,7 +382,6 @@ def create_manifest(
         dataset_uuid,
     )
 
-    print(dbgap_study_id)
     if Path(output_directory).exists():
         df.to_csv(filename, sep="\t", index=False)
 
