@@ -177,6 +177,7 @@ def __get_dbgap_study_id(file: str, dbgap_study_id: str) -> str:
     if dbgap_study_id == "" or dbgap_study_id is None:
         return ""
     else:
+        print(f'{file} {str(file).find("tar.gz") > 0 | str(file).find("fastq.gz") > 0}')
         if str(file).find("tar.gz") > 0 | str(file).find("fastq.gz") > 0:
             return dbgap_study_id
         else:
@@ -286,7 +287,9 @@ def _build_dataframe(
         df["local_id"] = None
 
     df["persistent_id"] = df["local_id"].apply(__get_persistent_id)
-    df["dbgap_study_id"] = df["local_id"].apply(__get_dbgap_study_id, dbgap_study_id=dbgap_study_id)
+    df["dbgap_study_id"] = df["local_id"].apply(
+        __get_dbgap_study_id, dbgap_study_id=dbgap_study_id
+    )
 
     if "modification_time" in df.keys():
         df = df.rename(columns={"modification_time": "creation_time"})

@@ -942,6 +942,7 @@ def do_it(
                 print(
                     f"dbGaP study ID set to {__get_dbgap_study_id(hubmap_id=hubmap_id, token=token)}"
                 )
+
                 answer = files.create_manifest(
                     project_id=data_provider,
                     assay_type=data_type,
