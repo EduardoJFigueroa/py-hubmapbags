@@ -564,6 +564,7 @@ def __get_dataset_metadata(hubmap_id: str, token: str, instance: str = "prod") -
     else:
         dataset_metadata["description"] = None
 
+    print(f'Dataset description set to: {dataset_metadata["description"]}')
     return dataset_metadata
 
 
