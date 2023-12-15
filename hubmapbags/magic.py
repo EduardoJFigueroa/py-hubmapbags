@@ -938,6 +938,10 @@ def do_it(
                     if Path(temp_file).exists():
                         Path(temp_file).unlink()
 
+                dbgap_study_id = __get_dbgap_study_id(hubmap_id=hubmap_id, token=token)
+                print(
+                    f"dbGaP study ID set to {__get_dbgap_study_id(hubmap_id=hubmap_id, token=token)}"
+                )
                 answer = files.create_manifest(
                     project_id=data_provider,
                     assay_type=data_type,
