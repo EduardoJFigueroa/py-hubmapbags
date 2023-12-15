@@ -1207,6 +1207,9 @@ def create_submission(
                         and dataset["is_primary"]
                     ):
                         hubmap_id = dataset["hubmap_id"]
+                        print(
+                            f"dbGaP study ID set to {__get_dbgap_study_id(hubmap_id=hubmap_id, token=token)}"
+                        )
                         do_it(
                             hubmap_id,
                             token=token,
