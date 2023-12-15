@@ -1147,7 +1147,7 @@ def __get_dbgap_study_id(hubmap_id: str, token: str, debug: bool = False):
     """
 
     metadata = apis.get_dataset_info(hubmap_id=hubmap_id, token=token)
-    dbgap_study_id = metadata["direct_ancestors"]["dbgap_study_url"]
+    dbgap_study_id = metadata["direct_ancestors"][0]["dbgap_study_url"]
     dbgap_study_id = dbgap_study_id.replace(
         "https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=", ""
     )
