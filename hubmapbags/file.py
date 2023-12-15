@@ -383,6 +383,7 @@ def create_manifest(
         dataset_uuid,
     )
 
+    print(dbgap_study_id)
     if Path(output_directory).exists():
         df.to_csv(filename, sep="\t", index=False)
 
