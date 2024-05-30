@@ -145,7 +145,7 @@ def __query_ancestors_info(
         return None
 
     if __get_instance(instance) == "prod":
-        URL = "https://entity.api.hubmapconsortium.org/ancestors/" + hubmap_id
+        URL = f"https://entity.api.hubmapconsortium.org/ancestors/{hubmap_id}"
     else:
         URL = (
             "https://entity-api"
@@ -1540,7 +1540,7 @@ def __query_assay_types(token: str, debug: bool = False) -> list:
     headers = {"Authorization": "Bearer " + token, "accept": "application/json"}
     body = {
         "query": {"bool": {"must": [{"match_phrase": {"entity_type": "dataset"}}]}},
-        "aggs": {"fieldvals": {"terms": {"field": "data_types.keyword", "size": 500}}},
+        "aggs": {"fieldvals": {"terms": {"field": "dataset_type.keyword", "size": 500}}},
     }
 
     data = requests.post(url=url, headers=headers, json=body).json()
