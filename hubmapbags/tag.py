@@ -443,3 +443,25 @@ def dataset(hubmap_id, token=None, debug=False):
 
     tags = dict(sorted(checks.items()))
     return tags
+
+# Add value at the column, string
+def add(df,column,tag):
+	# Verify that is a string
+	alpha_tag = tag.isalpha()
+
+	# store in df
+	if alpha_tag == true:
+		df[column] = tag
+	else:
+		df[column] = None
+
+# Verify if the column has value, True or False
+def update (df,column,tag):
+	if df[column]== tag:
+		return True
+	else:
+		return False
+
+# Eliminate the selected tag value, None
+def remove (df,column,tag):
+	df[column] = None
